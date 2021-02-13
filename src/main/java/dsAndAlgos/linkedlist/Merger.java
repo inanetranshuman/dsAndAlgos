@@ -17,7 +17,10 @@ public class Merger {
         ll2.addNode(new ListNode(9));
         printLinkedList(ll);
         printLinkedList(ll2);
-        printLinkedList(mergeSortedNewList(ll, ll2));
+        // printLinkedList(mergeSortedNewList(ll, ll2));
+        mergeIntoList(ll, ll2);
+        printLinkedList(ll);
+        // printLinkedList(ll2);
 
     }
 
@@ -29,6 +32,27 @@ public class Merger {
             node = node.next;
         }
         System.out.println();
+    }
+
+    private static void mergeIntoList(LinkedList ll, LinkedList ll2) {
+        ListNode node = ll.getHead();
+        ListNode node2 = ll2.getHead();
+        ListNode pm = ll.dummy;
+        while(node != null && node2 != null) {
+            if(node.val < node2.val) {
+                pm.next = node2;
+                pm = pm.next;
+                node2 = node2.next;
+            } else {
+                pm.next = node;
+                pm = pm.next;
+                node = node.next;
+            }
+        }
+
+        if(node != null)
+            pm.next = node;
+        else if(node2 != null) pm.next = node2;
     }
 
     private static LinkedList mergeSortedNewList(LinkedList ll, LinkedList ll2) {
