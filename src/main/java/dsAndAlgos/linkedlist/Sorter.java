@@ -13,7 +13,7 @@ public class Sorter {
         ll.addNode(new ListNode(2));
         ll.addNode(new ListNode(8));
         ll.addNode(new ListNode(11));
-        ll.addNode(new ListNode(1));
+        ll.addNode(new ListNode(19));
 
         printLinkedList(ll);
         // sortByData(ll);
@@ -23,12 +23,12 @@ public class Sorter {
 
     private static void printLinkedList(LinkedList ll) {
         ListNode node = ll.getHead();
-        int counter = 1;
+        System.out.print("Linked list:");
         while(node != null) {
-            System.out.println(counter + ": " + node.val);
+            System.out.print(" " + node.val);
             node = node.next;
-            counter++;
         }
+        System.out.println();
     }
 
     private static void sortByData(LinkedList ll) {
