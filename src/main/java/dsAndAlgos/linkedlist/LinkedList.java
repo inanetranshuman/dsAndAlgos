@@ -3,12 +3,15 @@ package dsAndAlgos.linkedlist;
 public class LinkedList {
 
     ListNode dummy = new ListNode(-1);
+    ListNode tail = null;
 
     public ListNode getHead() {
         return dummy.next;
     }
 
     public ListNode getTail() {
+        if(tail != null) return tail;
+
         ListNode node = dummy.next;
         while(node.next != null) {
             node = node.next;
@@ -18,8 +21,20 @@ public class LinkedList {
     }
 
     public void addNode(ListNode node) {
+        if(tail == null) tail = node;
         node.next = dummy.next;
         dummy.next = node;
+
+    }
+
+    public void addNodeToTail(ListNode node) {
+        if(tail == null) {
+            tail = node;
+            dummy.next = node;
+        } else {
+            tail.next = node;
+            tail = node;
+        }
     }
 
     public void delete(int val) {
